@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="nandu">
+        <item>按学号排序</item>
+        <item>按姓名排序</item>
+        <item>按籍贯排序</item>
+        <item>按成绩排序</item>
+    </string-array>
+</resources>

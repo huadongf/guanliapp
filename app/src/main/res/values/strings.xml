@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="xuehao">学号</string>
+    <string name="xingming">姓名</string>
+    <string name="xingbie">性别</string>
+    <string name="jiguan">籍贯</string>
+    <string name="chengji">成绩</string>
+    <string name="baocun">保存</string>
+</resources>
