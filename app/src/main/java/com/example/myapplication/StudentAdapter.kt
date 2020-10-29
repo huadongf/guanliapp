@@ -1,16 +1,23 @@
 package com.example.myapplication
 
 import android.content.Context
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 
 class Studentadapter(private val context: Context, private val kapianList: ArrayList<User>) : RecyclerView.Adapter<Studentadapter.ViewHolder>() {
     private lateinit var  onItemClickListener: OnItemClickListener
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val equationName: TextView = view.findViewById(R.id.stuu)
+        val tu:View=view.findViewById(R.id.tupian)
+        val equationhome: TextView = view.findViewById(R.id.stuuhome)
+        val equationgender: TextView = view.findViewById(R.id.stugender)
+        val equationid: TextView = view.findViewById(R.id.stuuid)
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.xuesheng_item, parent, false)
@@ -31,6 +38,10 @@ class Studentadapter(private val context: Context, private val kapianList: Array
     }
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.equationName.text = kapianList[position].Name
+        holder.equationhome.text = kapianList[position].hometown
+        holder.equationgender.text = kapianList[position].gender
+        holder.equationid.text = kapianList[position].id
+        Glide.with(context).load(Uri.parse(kapianList[position].urii)).into(holder.tu as ImageView)
     }
     override fun getItemCount() = kapianList.size
     interface OnItemClickListener {

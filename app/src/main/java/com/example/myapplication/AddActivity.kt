@@ -37,6 +37,7 @@ class AddActivity : AppCompatActivity() {
                     gendertext.setText(user.gender)
                     hometext.setText(user.hometown)
                     gradetext.setText(user.grade.toString())
+                    ur= user.urii
                     Glide.with(this).load(Uri.parse(user.urii)).into(icimagine)
                 }
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
