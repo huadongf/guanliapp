@@ -10,7 +10,6 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun userDao(): UserDao
     companion object {
         private var instance: AppDatabase? = null
-
         @Synchronized
         fun getDatabase(context: Context): AppDatabase {
             instance?.let {

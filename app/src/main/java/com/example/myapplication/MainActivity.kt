@@ -83,36 +83,28 @@ class MainActivity : AppCompatActivity() {
                 tv.textSize = 20f //设置大小
                 tv.gravity = Gravity.CENTER_HORIZONTAL //设置居中
                 val a = resources.getStringArray(R.array.nandu)
-                when {
-                    a[pos] == "按学号排序" -> {
-                        ok=1
-                        results.sortWith { o1, o2 ->
+                results.sortWith { o1, o2 ->
+                    when(a[pos]) {
+                        "按学号排序" -> {
+                            ok=1
                             o1.id.compareTo(o2.id)
                         }
-                        adapter.notifyDataSetChanged()
-                    }
-                    a[pos] == "按姓名排序" -> {
-                        ok=2
-                        results.sortWith { o1, o2 ->
+                        "按姓名排序" -> {
+                            ok=2
                             o1.Name.compareTo(o2.Name)
                         }
-                        adapter.notifyDataSetChanged()
-                    }
-                    a[pos] == "按成绩排序" -> {
-                        ok=3
-                        results.sortWith { o1, o2 ->
+                        "按成绩排序" -> {
+                            ok=3
                             o1.grade.compareTo(o2.grade)
                         }
-                        adapter.notifyDataSetChanged()
-                    }
-                    a[pos] == "按籍贯排序" -> {
-                        ok=4
-                        results.sortWith { o1, o2 ->
+                        "按籍贯排序" -> {
+                            ok=4
                             o1.hometown.compareTo(o2.hometown)
                         }
-                        adapter.notifyDataSetChanged()
+                        else -> o1.idd.compareTo(o2.idd)
                     }
                 }
+                adapter.notifyDataSetChanged()
             }
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
@@ -127,36 +119,28 @@ class MainActivity : AppCompatActivity() {
                 tv.textSize = 20f //设置大小
                 tv.gravity = Gravity.CENTER_HORIZONTAL //设置居中
                 val a = resources.getStringArray(R.array.nandu)
-                when {
-                    a[pos] == "按学号排序" -> {
-                        ok=1
-                        results.sortWith { o1, o2 ->
+                results.sortWith { o1, o2 ->
+                    when(a[pos]) {
+                        "按学号排序" -> {
+                            ok=1
                             o1.id.compareTo(o2.id)
                         }
-                        adapter.notifyDataSetChanged()
-                    }
-                    a[pos] == "按姓名排序" -> {
-                        ok=2
-                        results.sortWith { o1, o2 ->
+                        "按姓名排序" -> {
+                            ok=2
                             o1.Name.compareTo(o2.Name)
                         }
-                        adapter.notifyDataSetChanged()
-                    }
-                    a[pos] == "按成绩排序" -> {
-                        ok=3
-                        results.sortWith { o1, o2 ->
+                        "按成绩排序" -> {
+                            ok=3
                             o1.grade.compareTo(o2.grade)
                         }
-                        adapter.notifyDataSetChanged()
-                    }
-                    a[pos] == "按籍贯排序" -> {
-                        ok=4
-                        results.sortWith { o1, o2 ->
+                        "按籍贯排序" -> {
+                            ok=4
                             o1.hometown.compareTo(o2.hometown)
                         }
-                        adapter.notifyDataSetChanged()
+                        else -> o1.idd.compareTo(o2.idd)
                     }
                 }
+                adapter.notifyDataSetChanged()
             }
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }

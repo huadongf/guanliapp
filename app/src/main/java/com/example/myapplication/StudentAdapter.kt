@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.app.AlertDialog
 import android.content.Context
 import android.net.Uri
 import android.view.LayoutInflater
@@ -29,9 +30,20 @@ class Studentadapter(private val context: Context, private val kapianList: Array
         holder.itemView.setOnLongClickListener {
             val position = holder.adapterPosition
                 val userdao = AppDatabase.getDatabase(context as MainActivity).userDao()
-                userdao.deleteUserbyidd(kapianList[position].idd)
-                kapianList.remove(kapianList[position])
-            notifyItemRemoved(position)
+            AlertDialog.Builder(context).apply {
+                setTitle("删除")
+                setMessage("确定删除这个学生的信息?")
+                setCancelable(false)
+                setPositiveButton("删除") { dialog,which ->
+                    userdao.deleteUserbyidd(kapianList[position].idd)
+                    kapianList.remove(kapianList[position])
+                    notifyItemRemoved(position)
+                }
+                setNegativeButton("取消")
+                { dialog,which -> }
+                show()
+            }
+
             false
         }
         return holder
