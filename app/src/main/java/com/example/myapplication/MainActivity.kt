@@ -65,26 +65,13 @@ class MainActivity : AppCompatActivity() {
                 val bb = edit.toString()
                 for (user in userdao.chaxun(bb))
                     results.add(user)
-                when (ok) {
-                    1 -> {
-                        results.sortWith { o1, o2 ->
-                            o1.id.compareTo(o2.id)
-                        }
-                    }
-                    2 -> {
-                        results.sortWith { o1, o2 ->
-                            o1.Name.compareTo(o2.Name)
-                        }
-                    }
-                    3 -> {
-                        results.sortWith { o1, o2 ->
-                            o1.grade.compareTo(o2.grade)
-                        }
-                    }
-                    4 -> {
-                        results.sortWith { o1, o2 ->
-                            o1.hometown.compareTo(o2.hometown)
-                        }
+                results.sortWith { o1, o2 ->
+                    when(ok) {
+                        1 -> o1.id.compareTo(o2.id)
+                        2 -> o1.Name.compareTo(o2.Name)
+                        3 -> o1.grade.compareTo(o2.grade)
+                        4 -> o1.hometown.compareTo(o2.hometown)
+                        else -> o1.idd.compareTo(o2.idd)
                     }
                 }
                 adapter.notifyDataSetChanged()
