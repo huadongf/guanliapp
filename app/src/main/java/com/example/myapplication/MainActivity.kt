@@ -15,6 +15,7 @@ import kotlin.concurrent.thread
 class MainActivity : AppCompatActivity() {
     private val results = ArrayList<User>()
     private lateinit var adapter: Studentadapter
+    private var ok:Int=0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -64,6 +65,28 @@ class MainActivity : AppCompatActivity() {
                 val bb = edit.toString()
                 for (user in userdao.chaxun(bb))
                     results.add(user)
+                when (ok) {
+                    1 -> {
+                        results.sortWith { o1, o2 ->
+                            o1.id.compareTo(o2.id)
+                        }
+                    }
+                    2 -> {
+                        results.sortWith { o1, o2 ->
+                            o1.Name.compareTo(o2.Name)
+                        }
+                    }
+                    3 -> {
+                        results.sortWith { o1, o2 ->
+                            o1.grade.compareTo(o2.grade)
+                        }
+                    }
+                    4 -> {
+                        results.sortWith { o1, o2 ->
+                            o1.hometown.compareTo(o2.hometown)
+                        }
+                    }
+                }
                 adapter.notifyDataSetChanged()
             }
         })
@@ -75,24 +98,28 @@ class MainActivity : AppCompatActivity() {
                 val a = resources.getStringArray(R.array.nandu)
                 when {
                     a[pos] == "按学号排序" -> {
+                        ok=1
                         results.sortWith { o1, o2 ->
                             o1.id.compareTo(o2.id)
                         }
                         adapter.notifyDataSetChanged()
                     }
                     a[pos] == "按姓名排序" -> {
+                        ok=2
                         results.sortWith { o1, o2 ->
                             o1.Name.compareTo(o2.Name)
                         }
                         adapter.notifyDataSetChanged()
                     }
                     a[pos] == "按成绩排序" -> {
+                        ok=3
                         results.sortWith { o1, o2 ->
                             o1.grade.compareTo(o2.grade)
                         }
                         adapter.notifyDataSetChanged()
                     }
                     a[pos] == "按籍贯排序" -> {
+                        ok=4
                         results.sortWith { o1, o2 ->
                             o1.hometown.compareTo(o2.hometown)
                         }
@@ -115,24 +142,28 @@ class MainActivity : AppCompatActivity() {
                 val a = resources.getStringArray(R.array.nandu)
                 when {
                     a[pos] == "按学号排序" -> {
+                        ok=1
                         results.sortWith { o1, o2 ->
                             o1.id.compareTo(o2.id)
                         }
                         adapter.notifyDataSetChanged()
                     }
                     a[pos] == "按姓名排序" -> {
+                        ok=2
                         results.sortWith { o1, o2 ->
                             o1.Name.compareTo(o2.Name)
                         }
                         adapter.notifyDataSetChanged()
                     }
                     a[pos] == "按成绩排序" -> {
+                        ok=3
                         results.sortWith { o1, o2 ->
                             o1.grade.compareTo(o2.grade)
                         }
                         adapter.notifyDataSetChanged()
                     }
                     a[pos] == "按籍贯排序" -> {
+                        ok=4
                         results.sortWith { o1, o2 ->
                             o1.hometown.compareTo(o2.hometown)
                         }
