@@ -12,8 +12,10 @@
         <activity
             android:name=".AddActivity"
             android:label="学生信息"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
-        <activity android:name=".Add_Activity" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+
+        </activity>
+
 
         <meta-data
             android:name="com.google.android.actions"
