@@ -29,54 +29,56 @@ class AddActivity : AppCompatActivity() {
         ur=""
         val o:Long=0
         val ok=intent.getLongExtra(IDD, o)
-            val userdao = AppDatabase.getDatabase(this).userDao()
-            if (ok != o)
-                for (user in userdao.chazhao(ok)) {
-                    idtext.setText(user.id)
-                    nametext.setText(user.Name)
-                    gendertext.setText(user.gender)
-                    hometext.setText(user.hometown)
-                    gradetext.setText(user.grade.toString())
-                    ur= user.urii
-                    Glide.with(this).load(Uri.parse(user.urii)).into(icimagine)
-                }
+        val userdao = AppDatabase.getDatabase(this).userDao()
+        if (ok != o)
+            for (user in userdao.chazhao(ok)) {
+                idtext.setText(user.id)
+                nametext.setText(user.Name)
+                gendertext.setText(user.gender)
+                hometext.setText(user.hometown)
+                gradetext.setText(user.grade.toString())
+                ur= user.urii
+                Glide.with(this).load(Uri.parse(user.urii)).into(icimagine)
+            }
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         val intent = Intent(this, MainActivity::class.java)
         button.setOnClickListener{
             if(idtext.text.toString().isEmpty() || nametext.text.toString().isEmpty() || gendertext.text.toString()
-                    .isEmpty() || hometext.text.toString().isEmpty() || gradetext.text.toString()
-                    .isEmpty()||ur.isEmpty()
+                            .isEmpty() || hometext.text.toString().isEmpty() || gradetext.text.toString()
+                            .isEmpty()||ur.isEmpty()
             )
                 Toast.makeText(this,"请完整输入信息!", Toast.LENGTH_SHORT).show()
             else if(ok == o)
             {
 
-                    val ne = User(
+                val ne = User(
                         idtext.text.toString(),
                         nametext.text.toString(),
                         gendertext.text.toString(),
                         hometext.text.toString(),
                         gradetext.text.toString().toLong(),
                         ur
-                    )
-                    userdao.insertUser(ne)
-                    intent.putExtra("ONE", ne)
-                    startActivity(intent)
+                )
+                userdao.insertUser(ne)
+                intent.putExtra("ONE", ne)
+                Toast.makeText(this,"添加学生信息成功!", Toast.LENGTH_SHORT).show()
+                startActivity(intent)
             }
             else
             {
-                    val ne = User(
+                val ne = User(
                         idtext.text.toString(),
                         nametext.text.toString(),
                         gendertext.text.toString(),
                         hometext.text.toString(),
                         gradetext.text.toString().toLong(),
                         ur
-                    )
-                    ne.idd = ok
-                    userdao.updateUser(ne)
-                    intent.putExtra("ONE", ne)
-                    startActivity(intent)
+                )
+                ne.idd = ok
+                userdao.updateUser(ne)
+                intent.putExtra("ONE", ne)
+                Toast.makeText(this,"修改学生信息成功!", Toast.LENGTH_SHORT).show()
+                startActivity(intent)
             }
         }
     }
