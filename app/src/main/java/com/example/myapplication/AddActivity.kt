@@ -32,7 +32,7 @@ class AddActivity : AppCompatActivity() {
             val userdao = AppDatabase.getDatabase(this).userDao()
             if (ok != o)
                 for (user in userdao.chazhao(ok)) {
-                    idtext.setText(user.id.toString())
+                    idtext.setText(user.id)
                     nametext.setText(user.Name)
                     gendertext.setText(user.gender)
                     hometext.setText(user.hometown)
@@ -51,7 +51,7 @@ class AddActivity : AppCompatActivity() {
             {
 
                     val ne = User(
-                        idtext.text.toString().toLong(),
+                        idtext.text.toString(),
                         nametext.text.toString(),
                         gendertext.text.toString(),
                         hometext.text.toString(),
@@ -65,7 +65,7 @@ class AddActivity : AppCompatActivity() {
             else
             {
                     val ne = User(
-                        idtext.text.toString().toLong(),
+                        idtext.text.toString(),
                         nametext.text.toString(),
                         gendertext.text.toString(),
                         hometext.text.toString(),
