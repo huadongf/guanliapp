@@ -41,7 +41,6 @@ class AddActivity : AppCompatActivity() {
                 Glide.with(this).load(Uri.parse(user.urii)).into(icimagine)
             }
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        val intent = Intent(this, MainActivity::class.java)
         button.setOnClickListener{
             if(idtext.text.toString().isEmpty() || nametext.text.toString().isEmpty() || gendertext.text.toString()
                             .isEmpty() || hometext.text.toString().isEmpty() || gradetext.text.toString()
@@ -60,9 +59,8 @@ class AddActivity : AppCompatActivity() {
                         ur
                 )
                 userdao.insertUser(ne)
-                intent.putExtra("ONE", ne)
                 Toast.makeText(this,"添加学生信息成功!", Toast.LENGTH_SHORT).show()
-                startActivity(intent)
+                finish()
             }
             else
             {
@@ -76,9 +74,8 @@ class AddActivity : AppCompatActivity() {
                 )
                 ne.idd = ok
                 userdao.updateUser(ne)
-                intent.putExtra("ONE", ne)
                 Toast.makeText(this,"修改学生信息成功!", Toast.LENGTH_SHORT).show()
-                startActivity(intent)
+                finish()
             }
         }
     }
